@@ -15,7 +15,7 @@ void print_time_of_solution(int seconds) {
 }
 
 int main() {
-    srand(time(0));
+    srand(time(0));  
 
     int number_of_examples;
     cout << "Enter the number of examples: ";
@@ -32,13 +32,16 @@ int main() {
         char k1 = '+';
         char k2 = '-';
 
-
+        
         if (num1 < num2) {
             swap(num1, num2);
         }
-        int intermediate_result = num1 - num2;
 
-        int correct_result = intermediate_result + num3;
+        if (num1 - num2 < num3) {
+            num3 = num1 - num2 + get_random_number() % (num1 - num2 + 1);
+        }
+
+        int correct_result = num1 - num2 + num3;
 
         int user_answer;
         cout << num1 << " " << k1 << " " << num2 << " " << k2 << " " << num3 << " = ";
